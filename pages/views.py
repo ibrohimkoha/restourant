@@ -4,7 +4,14 @@ from .forms import MessageForm, ReservationForm
 
 # Create your views here.
 def home(request):
-    return render(request, template_name='index.html')
+    all = AffordableModel.objects.all()
+    template_name = 'index.html'
+    category = AffordableModel.objects.all()
+    context = {
+        'all': all,
+        'category': category
+    }
+    return render(request, template_name='index.html',context=context)
 
 
 def message(request):
