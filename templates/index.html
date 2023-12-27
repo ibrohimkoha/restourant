@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
         <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="{% static 'css/jquery-ui.css'%}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{% static 'css/font-awesome.min.css'%}" rel="stylesheet">
-        <link rel="icon" href="favicon-1.ico" type="image/x-icon">
+        <link rel="icon" href="{% static 'favicon-1.ico' %}" type="image/x-icon">
     </head>
 
     <body>
@@ -72,11 +72,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-section">
-                       <img src="{% static 'images/kabob.jpg'%}" width="250" height="220">
-                       <img src="{% static 'images/limes.jpg'%}" width="250" height="220">
+                       <img src="{% static 'images/kabob.jpg'%}" width="250" height="220" alt="">
+                       <img src="{% static 'images/limes.jpg'%}" width="250" height="220" alt="">
                        <div class="img-section-space"></div>
-                       <img src="{% static 'images/radish.jpg'%}"  width="250" height="220">
-                       <img src="{% static 'images/corn.jpg'%}"  width="250" height="220">
+                       <img src="{% static 'images/radish.jpg'%}"  width="250" height="220" alt="">
+                       <img src="{% static 'images/corn.jpg'%}"  width="250" height="220" alt="">
                    </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
             <div class="text-content container"> 
                 <div class="col-md-5">
                    <div class="img-section">
-                       <img src="{% static 'images/beer_spec.jpg'%}" width="100%">
+                       <img src="{% static 'images/beer_spec.jpg'%}" width="100%" alt="">
                    </div>
                 </div>
                 <br>
@@ -241,7 +241,8 @@
                     <!-- Form Area -->
                     <div class="contact-form">
                         <!-- Form -->
-                        <form id="contact-us" method="post" action="http://markup.themewagon.com/restaurant_pro/reserve.php">
+                        <form id="contact-us" method="post" action="{% url 'pages:reservation' %}">
+                            {% csrf_token %}
                             <!-- Left Inputs -->
                             <div class="container">
                                 <div class="row">
@@ -347,10 +348,9 @@
                             <button id="cfsubmit" type="submit" class="text-center form-btn form-btn">Send your Message</button>
                         
                         </div><!-- End Contact Form Area -->
-                </form>
-                <div id="contactFormResponse"></div>
-
-                       
+                    </form>
+                    <div id="contactFormResponse"></div>
+                </div>
             </div>
         </section>
 
